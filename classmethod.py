@@ -1,6 +1,8 @@
 # class method = allow operation related to the class itself
 #  take class as the first parameter , which represent the class itself
 
+# simple word me class method sirf khudko call karega 
+
 class Student:
 
     count = 0
@@ -33,6 +35,8 @@ student1 = Student("Spongbob", 3.2)
 student2 = Student("patrick", 2.0)
 student3 = Student("sandy", 4.0)
 
-print(Student.get_count())
+print(Student.get_count())   #these are only for calling class function...
 print(Student.get_average_gpa())
+#simple wala  
+print(student1.get_info())
 
