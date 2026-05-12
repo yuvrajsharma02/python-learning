@@ -1,54 +1,26 @@
-#property = Decorater used to define  a method as property (it cab be accessed like an attribute)
-#           Benefit : add additional logic when read, write, or delete attribute
-#           Give you getter , setter and deleter method 
+#Decorator = A function that extends the behaviour of another function
+#            without modify that base function
+#            Pass the base function as a argument to the decorator
 
-class Rectangle:
-    def __init__(self, width, height):
-        self._width = width  #underscore private dikhane ke liye use hota hai ..ye bolta hai   ये internal variable है, बाहर से direct मत छेड़ो
-        self._height = height 
+#            @add_sprinkle
+#            get_ice_cream("vanilla")
 
-        
-        #🔥 इसलिए property का काम है
-        #   function को simple बनाना
-        #   variable जैसा access देना
-        #   data को control/format करना
+def add_sprinkles(func):  # make an function and call a parameter func...
+    def wrapper():   
+        print("*sprinkles*")
+        func()
+    return wrapper
 
-    @property   #--> Function को variable की तरह इस्तेमाल करना
-    def width(self):  
-        return f"{self._width:.1f}cm"
-    
-    @property  
-    def height(self):
-        return f"{self._height:.1f}cm"
-    
-    @width.setter
-    def width(self,new_width):
-        if new_width > 0:
-            self._width = new_width
-        else:
-            print("Width must be greater than zero")
+def add_fudge(func):
+    def wrapper():
+        print("*You add fudge*")
+        func()
+    return wrapper
 
-    @height.setter
-    def height(self,new_height):
-        if new_height > 0:
-            self._height = new_height
-        else:
-            print("Width must be greater than zero")
+@add_sprinkles
+@add_fudge
 
-    @width.deleter
-    def width(self):
-        del self._width
-        print("width has been deleted")
+def get_ice_cream():
+    print("here is your ice-cream")
 
-    @height.deleter
-    def height(self):
-        del self._height
-        print("height has been deleted")    
-
-rectangle = Rectangle(3, 4)
-
-print(rectangle.width)  #humne ise variable ki tarah use kiya hai kyuki hum @property use kar rahe hai
-print(rectangle.height)
-del rectangle.width  
-
-
+get_ice_cream()
