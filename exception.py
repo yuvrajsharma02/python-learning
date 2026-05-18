@@ -20,5 +20,6 @@ except ValueError:           # iske threw user ko massage jayegi ki vo value sah
  # ab hum chahte to direct Exception bhi use kar sakte the but it was an bad practice 
 
 finally:
-    print("do some cleanup here ")  # finally का use उस code को चलाने के लिए होता है जो हर हालत में execute होना chahiye
+    print("do some cleanup here ")  # finally का use उस code को चलाने के लिए होता है जो हर हालत में execute होना chahiye   
+    
 
